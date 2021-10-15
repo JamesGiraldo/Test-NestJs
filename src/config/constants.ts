@@ -1,11 +1,8 @@
-const env: any = process.env;
-export const PORT = env.PORT;
-export const SECRET = env.JWT_SECRET || 'secret';
-export const JWT_SECRET = 'JWT_SECRET'
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-export const jwtConstants = {
-    SECRET: 'secret',
-};
+export const PORT = process.env.PORT;
+export const JWT_SECRET = process.env.JWT_SECRET || 'secret';
 
 export const USER_TYPE = {
     ADMIN: 1,

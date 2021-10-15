@@ -12,6 +12,7 @@ import { UserModule } from './user/user.module';
 import { RolModule } from './rol/rol.module';
 import { RegisterModule } from './register/register.module';
 import { AuthModule } from './auth/auth.module';
+import { LoginModule } from './login/login.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { AuthModule } from './auth/auth.module';
     RolModule,
     RegisterModule,
     AuthModule,
+    LoginModule,
   ],
   controllers: [AppController],
   providers: [AppService],
