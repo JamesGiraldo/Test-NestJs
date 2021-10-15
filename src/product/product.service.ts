@@ -2,9 +2,9 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Like } from 'typeorm';
 
-import { ProductDto } from './dto/product.dto';
 import { ProductEntity } from './product.entity';
 import { ProductRepository } from './product.repository';
+import { ProductDto } from './dto/product.dto';
 
 import { HTTP_MESSAGE } from './../config/constants';
 

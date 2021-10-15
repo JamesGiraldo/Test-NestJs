@@ -1,5 +1,17 @@
 const env: any = process.env;
 export const PORT = env.PORT;
+export const SECRET = env.JWT_SECRET || 'secret';
+export const JWT_SECRET = 'JWT_SECRET'
+
+export const jwtConstants = {
+    SECRET: 'secret',
+};
+
+export const USER_TYPE = {
+    ADMIN: 1,
+    USER: 2,
+    TESTER: 3,
+};
 
 export const HTTP_CODE = {
     UNAUTHORIZED: 401,
@@ -17,10 +29,47 @@ export const HTTP_MESSAGE = {
         code: HTTP_CODE.UNAUTHORIZED,
         message: "CREDENTIAL_INCORRECT"
     },
+    INTERNAL_SERVER_ERROR: {
+        code: HTTP_CODE.SERVER_ERROR,
+        message: "INTERNAL_SERVER_ERROR"
+    },
+    NO_RESULT: {
+        code: HTTP_CODE.NOT_FOUND,
+        message: "NO_RESULT"
+    },
     ID_NOT_FOUND: {
         code: HTTP_CODE.NOT_FOUND,
         message: "ID_NOT_FOUND"
     },
+    SUCCESS: {
+        code: HTTP_CODE.SUCCESS,
+        message: "SUCCESS"
+    },
+    DELETED: {
+        code: HTTP_CODE.SUCCESS,
+        message: "DELETED"
+    },
+    UPDATED: {
+        code: HTTP_CODE.SUCCESS,
+        message: "UPDATED"
+    },
+    CREATED: {
+        code: HTTP_CODE.SUCCESS,
+        message: "CREATED"
+    },
+    NO_DATA: {
+        code: HTTP_CODE.NOT_FOUND,
+        message: "NO_DATA"
+    },
+    EXISTS: {
+        code: HTTP_CODE.CONFLIT,
+        message: "EXISTS"
+    },
+    NOT_EXISTS: {
+        code: HTTP_CODE.NOT_FOUND,
+        message: "NOT_EXISTS"
+    },
+
     INCTIVE_USER: {
         code: HTTP_CODE.FORBIDDEN,
         message: "INCTIVE_USER"
@@ -45,18 +94,6 @@ export const HTTP_MESSAGE = {
         code: HTTP_CODE.CONFLIT,
         message: "PASSWORD_ALREADY_EXISTS"
     },
-    INTERNAL_SERVER_ERROR: {
-        code: HTTP_CODE.SERVER_ERROR,
-        message: "INTERNAL_SERVER_ERROR"
-    },
-    SUCCESS: {
-        code: HTTP_CODE.SUCCESS,
-        message: "SUCCESS"
-    },
-    NO_RESULT: {
-        code: HTTP_CODE.NOT_FOUND,
-        message: "NO_RESULT"
-    },
     NO_TOKEN: {
         code: HTTP_CODE.UNAUTHORIZED,
         message: "NO_TOKEN"
@@ -69,21 +106,10 @@ export const HTTP_MESSAGE = {
         code: HTTP_CODE.UNAUTHORIZED,
         message: "TOKEN_INVALID"
     },
-    DELETED: {
-        code: HTTP_CODE.SUCCESS,
-        message: "DELETED"
-    },
-    UPDATED: {
-        code: HTTP_CODE.SUCCESS,
-        message: "UPDATED"
-    },
-    CREATED: {
-        code: HTTP_CODE.SUCCESS,
-        message: "CREATED"
-    },
-    NO_DATA: {
+
+    ROLE_NOT_FOUND: {
         code: HTTP_CODE.NOT_FOUND,
-        message: "NO_DATA"
+        message: "ROLE_NOT_FOUND"
     },
 
 };

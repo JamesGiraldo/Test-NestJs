@@ -6,7 +6,12 @@ import { AppService } from './app.service';
 
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { ProductModule } from './product/product.module';
+import { UserModule } from './user/user.module';
+import { RolModule } from './rol/rol.module';
+import { RegisterModule } from './register/register.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -21,12 +26,16 @@ import { ProductModule } from './product/product.module';
       username: env.DATABASE_USER,
       password: env.DATABASE_PASSWORD,
       database: env.DATABASE_NAME,
-      entities: [],
+      entities: [ __dirname + '/**/*.entity{.ts,.js}' ],
       synchronize: true,
-      autoLoadEntities: true,
+      // autoLoadEntities: true,
       logging: false,
     }),
     ProductModule,
+    UserModule,
+    RolModule,
+    RegisterModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
