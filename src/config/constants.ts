@@ -22,13 +22,17 @@ export const HTTP_CODE = {
 };
 
 export const HTTP_MESSAGE = {
-    CREDENTIAL_INCORRECT: {
-        code: HTTP_CODE.UNAUTHORIZED,
-        message: "CREDENTIAL_INCORRECT"
-    },
     INTERNAL_SERVER_ERROR: {
         code: HTTP_CODE.SERVER_ERROR,
         message: "INTERNAL_SERVER_ERROR"
+    },
+    PRIVILEGES_NOT_ALLOWED: {
+        code: HTTP_CODE.UNAUTHORIZED,
+        message: "PRIVILEGES_NOT_ALLOWED"
+    },
+    CREDENTIAL_INCORRECT: {
+        code: HTTP_CODE.UNAUTHORIZED,
+        message: "CREDENTIAL_INCORRECT"
     },
     NO_RESULT: {
         code: HTTP_CODE.NOT_FOUND,

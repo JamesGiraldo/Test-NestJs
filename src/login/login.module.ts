@@ -1,3 +1,4 @@
+import { JwtStrategyLogin } from './strategies/jwt.strategy';
 import * as dotenv from 'dotenv'; dotenv.config();
 
 import { Module } from '@nestjs/common';
@@ -27,8 +28,8 @@ import { RolEntity } from './../rol/rol.entity';
       inject: [ ConfigService ],
     }),
   ],
-  providers: [LoginService],
+  providers: [LoginService, ConfigService,  JwtStrategyLogin],
   controllers: [LoginController],
-  exports: [ PassportModule ]
+  exports: [ PassportModule, JwtStrategyLogin ]
 })
 export class LoginModule {}
