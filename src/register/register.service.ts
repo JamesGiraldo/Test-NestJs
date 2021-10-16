@@ -1,3 +1,4 @@
+import { JwtService } from '@nestjs/jwt';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -11,6 +12,7 @@ import { RoleType } from './../rol/rol.enum';
 
 import { UserDto } from './../user/dto/user.dto';
 import { HTTP_MESSAGE } from './../config/constants';
+import { PayloadInterface } from 'src/login/payload.interface';
 
 @Injectable()
 export class RegisterService {
@@ -19,7 +21,8 @@ export class RegisterService {
         @InjectRepository(RolEntity)
         private rolRepository: RolRepository,
         @InjectRepository(Userentity)
-        private registerReposity: RegisterReposity
+        private registerReposity: RegisterReposity,
+        private readonly jwtService: JwtService
     ) { }
 
 
@@ -31,14 +34,16 @@ export class RegisterService {
         const newUser = await this.registerReposity.create(user);
         newUser.roles = role;
         await this.registerReposity.save(newUser);
-        const usersData = {
+        const usersData: PayloadInterface = {
             id: newUser.id,
             name: newUser.name,
             email: newUser.email,
             username: newUser.username,
-            roles: newUser.roles
+            roles: newUser.roles.map(role => role.roleName as RoleType ),
         };
-        return usersData;
+        const token = await this.jwtService.sign(usersData);
+
+        return {usersData, token};
     }
 
     private async existingData(user: UserDto): Promise<any> {

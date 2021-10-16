@@ -1,4 +1,3 @@
-import { JwtStrategyLogin } from './strategies/jwt.strategy';
 import * as dotenv from 'dotenv'; dotenv.config();
 
 import { Module } from '@nestjs/common';
@@ -10,6 +9,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { LoginService } from './login.service';
 import { LoginReposity } from './login.repository';
 import { LoginController } from './login.controller';
+
+import { JwtStrategyLogin } from './strategies/jwt.strategy';
 
 import { Userentity } from './../user/user.entity';
 import { RolEntity } from './../rol/rol.entity';

@@ -29,6 +29,7 @@ export class LoginService {
         const passwordOk = await compare(password, loginUser.password);
         if (!passwordOk) throw new UnauthorizedException(HTTP_MESSAGE.CREDENTIAL_INCORRECT);
         const payload: PayloadInterface = {
+            name: loginUser.name,
             username: loginUser.username,
             email: loginUser.email,
             id: loginUser.id,
